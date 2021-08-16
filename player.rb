@@ -3,7 +3,7 @@
 # Player class to create a player, allow it to select its symbol for board and to track its moves
 
 class Player
-  attr_reader :name, :symbol, :moves
+  attr_accessor :name, :symbol, :moves
 
   def initialize(name, symbol)
     @name = name
