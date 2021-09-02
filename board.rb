@@ -4,6 +4,13 @@
 
 class Board
     attr_reader :cells
+
+    @@winning_combos = [
+      [0,1,2],[3,4,5],[6,7,8],
+      [0,3,6],[1,4,7],[2,5,8],
+      [0,4,8],[2,4,6]
+  ]
+
   def initialize
     @cells = [1, 2, 3, 4, 5, 6, 7, 8, 9]
   end
@@ -18,7 +25,15 @@ class Board
 
   def update_board(number, symbol)
     @cells[number - 1] = symbol
-  end  
+  end
+  
+  def is_winner?(moves)
+    #check player moves against winning combos and return true is moves in winning combo
+  end
+
+  def is_tie?(cells)
+    #check cells to see if all filled with symbols
+  end
 
 end
 
