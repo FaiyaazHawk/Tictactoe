@@ -28,7 +28,7 @@ class Board
   end
   
   def is_winner?(moves)
-    if WINNING_COMBOS.include? (moves.sort!) #still needs work to check result
+    if WINNING_COMBOS.any? { |combo| (combo - moves).empty? }
       return TRUE 
     else
       return FALSE
@@ -41,7 +41,7 @@ class Board
 
 end
 
-moves = [3,1,5,4,7]
+moves = [4,0,1]
 board = Board.new
 p board
 p board.is_winner?(moves)
