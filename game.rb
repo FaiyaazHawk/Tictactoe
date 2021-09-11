@@ -64,7 +64,7 @@ class Game
 
     def turn(player)
         move = turn_input(player)
-        player.moves += Array(move)
+        player.moves += Array(move-1)
         board.update_board(move, player.symbol)
         board.show_board    
     end
@@ -72,7 +72,7 @@ class Game
     def turn_input(player)
         puts player_turn_message(player.name)
         number = gets.chomp.to_i
-        if number == board.proper_move?(number)
+        if board.proper_move?(number)
                 return number
         else
                 puts input_error
