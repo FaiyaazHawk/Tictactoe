@@ -41,9 +41,6 @@ class Board
 
 end
 
-moves = [4,0,1]
-board = Board.new
-p board
-p board.is_winner?(moves)
+
 
 
