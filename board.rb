@@ -27,8 +27,8 @@ class Board
     @cells[number - 1] = symbol
   end
   
-  def is_winner?(moves)
-    if WINNING_COMBOS.any? { |combo| (combo - moves).empty? }
+  def is_winner?(player)
+    if WINNING_COMBOS.any? { |combo| (combo - player.moves).empty? }
       return TRUE 
     else
       return FALSE
@@ -37,7 +37,11 @@ class Board
 
   def board_filled?
      @cells.all? { |cell| cell =~ /[a-zA-Z]/ }
-  end  
+  end
+  
+  def proper_move?(number)
+    cells[number-1] == number
+  end
 
 end
 
