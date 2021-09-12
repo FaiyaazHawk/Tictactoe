@@ -48,8 +48,9 @@ class Game
     def player_turns
         @current_player = player_1
         until board.board_filled?
-                turn(current_player)
+                
         break if board.is_winner?(current_player)
+                turn(current_player)
                 @current_player = change_current_player
         end
     end
