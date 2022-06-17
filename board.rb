@@ -3,13 +3,13 @@
 # board class to create board, display board, update board
 
 class Board
-  attr_reader :cells
+  attr_accessor :cells
 
-  @@winning_combos = [
+  WINNING_COMBOS = [
     [0, 1, 2], [3, 4, 5], [6, 7, 8],
     [0, 3, 6], [1, 4, 7], [2, 5, 8],
     [0, 4, 8], [2, 4, 6]
-  ]
+  ].freeze
 
   def initialize
     @cells = [1, 2, 3, 4, 5, 6, 7, 8, 9]
@@ -27,11 +27,19 @@ class Board
     @cells[number - 1] = symbol
   end
 
-  def is_winner?(moves)
-    # check player moves against winning combos and return true is moves in winning combo
+  def is_winner?(player)
+    if WINNING_COMBOS.any? { |combo| (combo - player.moves).empty? }
+      TRUE
+    else
+      FALSE
+    end
   end
 
-  def is_tie?(cells)
-    # check cells to see if all filled with symbols
+  def board_filled?
+    @cells.all? { |cell| cell =~ /[a-zA-Z]/ }
+  end
+
+  def proper_move?(number)
+    cells[number - 1] == number
   end
 end
